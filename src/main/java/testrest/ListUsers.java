@@ -9,10 +9,12 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.github.javafaker.idnumbers.EnIdNumber;
 import com.google.appengine.api.datastore.DatastoreService;
 import com.google.appengine.api.datastore.DatastoreServiceFactory;
 import com.google.appengine.api.datastore.Entity;
 import com.google.appengine.api.datastore.FetchOptions;
+import com.google.appengine.api.datastore.KeyFactory;
 import com.google.appengine.api.datastore.Query;
 import com.google.appengine.api.datastore.Query.Filter;
 import com.google.appengine.api.datastore.Query.FilterOperator;
@@ -43,9 +45,9 @@ public class ListUsers extends HttpServlet {
 		
 		DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
 		Filter heightMinFilter =
-				new FilterPredicate("email", FilterOperator.EQUAL, "Collier and Sons@hello.com");
+				new FilterPredicate("email", FilterOperator.EQUAL, "Steuber and Sons@hello.com");
 		Filter heightMaxFilter =
-			    new FilterPredicate("password", FilterOperator.EQUAL, "Sleek Paper Platess");
+			    new FilterPredicate("password", FilterOperator.EQUAL, "Practical Cotton Clock");
 		CompositeFilter heightRangeFilter =
 			    CompositeFilterOperator.and(heightMinFilter, heightMaxFilter);
 		
@@ -56,6 +58,7 @@ public class ListUsers extends HttpServlet {
 		for (Entity entity : results) {
 
 		System.out.println(entity.getProperty("name"));	
+		System.out.println(entity.getKey().getId());
 		}
 		response.getWriter().append("Served at: ").append(request.getContextPath());
 	}
