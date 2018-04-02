@@ -1,0 +1,179 @@
+/* start of  font color related css*/
+
+.theme-text{
+	color:rgb(51, 51, 51) !important;
+	
+}
+
+.theme-color{
+	color:#eb384f !important;
+}
+
+.color-sky{
+	color: #7aaccb !important;
+}
+
+/* end of  font color related css*/
+
+/* start of  background color related css*/
+
+.bg-theme{
+	background:#eb384f !important;
+}
+.bg-white{
+		background:#ffffff !important;
+}
+
+.bg-dropdown{
+	
+	background: #f5f5f5 !important;
+}
+.bg-transparent{
+	background:transparent !important;
+}
+
+/* end of  background color related css*/
+
+.profile_image{
+	   background:url('../../assets/img/d.png') no-repeat left center;
+	
+}
+.size_15{
+	height:35px;
+	width:35px;
+	border-left: 1px solid gray;
+	
+}
+
+/* start of  border color related css*/
+
+.border-top-completed{
+	border-top:4px solid #eb384f!important;
+}
+.border-top-ongoing{
+	border-top:4px solid #37a447!important;
+}
+.border-top-scheduled{
+	border-top:4px solid #319ef3!important;
+}
+.ml-auto{
+	margin-left:auto !important;
+}
+.sky-blue-border{
+	border: 2px solid #7aaccb;
+	    border-radius: 2rem;
+	        
+}
+
+
+/* end of  border color related css*/
+
+
+
+/* start of  button related css*/
+
+.sky-blue-border:hover,.sky-blue-border:active{
+	background-color: transparent !important;
+    border-color:  #7aaccb !important; 
+}
+.custom-sm-icon-button{
+	min-width: 67px;
+	max-height: 30px;
+	padding: 1px !important;
+}
+
+.custom-lg-icon-button{
+	min-width: 90px;
+	max-height: 60px;
+	padding: 5px !important;
+}
+/* end of  button related css*/
+
+
+
+
+/* start of  font size related css*/
+.material-icons.md-48 { font-size: 48px; }
+
+.font-10{
+	font-size: 0.625rem!important;
+}
+.font-11{
+	font-size: 0.6875rem!important;
+}
+.font-12{
+	font-size: 0.75rem!important;
+}
+.font-13{
+	font-size: 0.8125rem!important;
+}
+.font-14{
+	font-size: 0.875rem!important;
+}
+.font-15{
+	font-size: 0.9375rem!important;
+}
+.font-16{
+	font-size: 1rem!important;
+}
+.font-17{
+	font-size: 1.0625rem!important;
+}
+.font-18{
+	font-size: 1.125rem!important;
+}
+.font-19{
+	font-size: 1.1875rem!important;
+}
+.font-20{
+	font-size: 1.25rem!important;
+}
+.font-32{
+	font-size: 2rem!important;
+}
+
+@media only screen and (max-width: 600px) {
+	.font-10{
+	font-size: 0.525rem!important;
+}
+.font-11{
+	font-size:  0.625rem!important;
+}
+.font-12{
+	font-size:0.6875rem!important;
+}
+.font-13{
+	font-size: 0.75rem!important;
+}
+.font-14{
+	font-size: 0.8125rem!important;
+}
+.font-15{
+	font-size: 0.875rem!important;
+}
+	.font-16{
+	font-size:  0.9375rem!important;
+}
+	
+	.font-17{
+	font-size: 1rem!important;
+}
+	
+	
+	.font-18{
+	font-size: 1.0625rem!!important;
+}
+	
+	.font-19{
+	font-size: 1.125rem!important;
+}
+	
+	.font-20{
+	font-size: 1.25rem!important;
+}
+	
+   .font-32{
+	font-size: 1.5rem!important;
+}
+}
+/* end of  font size related css*/
