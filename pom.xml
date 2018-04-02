@@ -47,7 +47,16 @@
       <groupId>com.google.appengine</groupId>
       <artifactId>appengine-api-1.0-sdk</artifactId>
       <version>1.9.63</version>
+            <scope>provided</scope>
+      
     </dependency>
+    <!-- https://mvnrepository.com/artifact/com.google.appengine/appengine-tools-sdk -->
+<dependency>
+    <groupId>com.google.appengine</groupId>
+    <artifactId>appengine-tools-sdk</artifactId>
+    <version>1.9.63</version>
+</dependency>
+    
     <dependency>
       <groupId>jstl</groupId>
       <artifactId>jstl</artifactId>
@@ -64,6 +73,32 @@
     <groupId>com.google.cloud</groupId>
     <artifactId>google-cloud-datastore</artifactId>
     <version>1.24.0</version>
+</dependency>
+<!-- https://mvnrepository.com/artifact/com.google.guava/guava -->
+<dependency>
+    <groupId>com.google.guava</groupId>
+    <artifactId>guava</artifactId>
+    <version>24.1-jre</version>
+</dependency>
+<!-- https://mvnrepository.com/artifact/com.google.appengine/appengine-testing -->
+<dependency>
+    <groupId>com.google.appengine</groupId>
+    <artifactId>appengine-testing</artifactId>
+    <version>1.9.63</version>
+    <scope>test</scope>
+</dependency>
+<!-- https://mvnrepository.com/artifact/com.google.appengine/appengine-api-labs -->
+<dependency>
+    <groupId>com.google.appengine</groupId>
+    <artifactId>appengine-api-labs</artifactId>
+    <version>1.9.63</version>
+</dependency>
+<!-- https://mvnrepository.com/artifact/com.google.appengine/appengine-api-stubs -->
+<dependency>
+    <groupId>com.google.appengine</groupId>
+    <artifactId>appengine-api-stubs</artifactId>
+    <version>1.9.63</version>
+    <scope>test</scope>
 </dependency>
 
     <!-- Test Dependencies -->
@@ -84,10 +119,12 @@
 <version>5.1.22</version>
 </dependency>
 <!-- https://mvnrepository.com/artifact/com.github.javafaker/javafaker -->
+
+<!-- https://mvnrepository.com/artifact/com.google.cloud/google-cloud-bigquery -->
 <dependency>
-    <groupId>com.github.javafaker</groupId>
-    <artifactId>javafaker</artifactId>
-    <version>0.14</version>
+    <groupId>com.google.cloud</groupId>
+    <artifactId>google-cloud-bigquery</artifactId>
+    <version>1.24.0</version>
 </dependency>
 
 </dependencies>
