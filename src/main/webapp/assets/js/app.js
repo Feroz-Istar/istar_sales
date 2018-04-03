@@ -9,7 +9,7 @@ $(document).ready(function(){
 			  });
 		
 	});
-	
+
 	$('.task_card').unbind().click(function(){
 		
 		$('.modal').modal('show')

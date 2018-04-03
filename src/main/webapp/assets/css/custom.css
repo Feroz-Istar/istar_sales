@@ -87,6 +87,11 @@
 	max-height: 60px;
 	padding: 5px !important;
 }
+
+.btn.focus, .btn:focus{
+	    box-shadow: 0 0 0 transparent !important;
+	
+}
 /* end of  button related css*/
 
 

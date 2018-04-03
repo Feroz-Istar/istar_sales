@@ -13,7 +13,7 @@
 	<div class="collapse navbar-collapse" id="navbarCollapse">
 		<ul class="navbar-nav mr-auto">
 			<li class="nav-item active ml-3 mr-3"><a
-				class="nav-link theme-text font-weight-normal" href="#">Dashboard
+				class="nav-link theme-text font-weight-normal" href="welcome.jsp">Dashboard
 					<span class="sr-only">(current)</span>
 			</a></li>
 			<li class="nav-item ml-3 mr-3 "><a
