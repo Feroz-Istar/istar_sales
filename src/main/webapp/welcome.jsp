@@ -17,7 +17,7 @@
 
 </head>
 
-<body style="background: #e8e8e8;">
+<body style="">
 	<jsp:include page="inc/nav.jsp"></jsp:include>
 	<main role="main" class="container">
 

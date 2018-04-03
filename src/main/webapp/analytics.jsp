@@ -52,13 +52,14 @@ table thead, table tbody tr {
 			 
 	<div class="container mt-4">
 	<nav aria-label="breadcrumb">
-				<ol class="breadcrumb">
+				<ol class="breadcrumb bg-white">
 					<li class="breadcrumb-item"><a href="/analytics.jsp">Teams</a></li>
 					<li class="breadcrumb-item " aria-current="page"><a class="text-muted" href="/individuals.jsp">Individuals</a></li>
 				</ol>
 				</nav>
 		<div class="row">
 			<div class="col-md-12 p-0 m-0">
+			<%for(int i=0;i<10; i++){ %>
 				<div class="card p-4 m-4 ">
 					<div class="row">
 						<div class="col-md-12">
@@ -72,7 +73,7 @@ table thead, table tbody tr {
 						</div>
 					</div>
 					<button class="btn bg-transparent" data-toggle="collapse"
-						data-target="#collapseOne" aria-expanded="true"
+						data-target="#<%=i %>" aria-expanded="true"
 						aria-controls="collapseOne">
 						<div class="row  pl-4  ">
 							<div class="col-md-2 pl-0 pr-0 align-self-center">
@@ -183,7 +184,7 @@ table thead, table tbody tr {
 							</div>
 						</div>
 					</button>
-					<div id="collapseOne" class="collapse" aria-labelledby="headingOne"
+					<div id="<%=i %>" class="collapse" aria-labelledby="headingOne"
 						data-parent="#accordion">
 
 						<div class="row">
@@ -263,6 +264,7 @@ table thead, table tbody tr {
 					</div>
 
 				</div>
+				<%} %>
 			</div>
 		</div>
 	</div>
@@ -271,42 +273,47 @@ table thead, table tbody tr {
 		Highcharts.setOptions({
 			colors : [ '#30beef', '#bae88a', '#fd6d81' ]
 		});
-		$('.highcart_div').highcharts(
-				{
-					data : {
-						table : document.getElementById('datatable'),
+		$('.highcart_div').each(function(){
+			$(this).highcharts(
+					{
+						data : {
+							table : document.getElementById('datatable'),
 
-					},
-					chart : {
-						type : 'pie'
-					},
-					title : {
-						text : ''
-					},
-					yAxis : {
-						allowDecimals : false,
+						},
+						chart : {
+							type : 'pie'
+						},
 						title : {
-							text : 'Units'
+							text : ''
+						},
+						yAxis : {
+							allowDecimals : false,
+							title : {
+								text : 'Units'
+							}
+						},
+						plotOptions : {
+							pie : {
+								allowPointSelect : true,
+								cursor : 'pointer',
+								dataLabels : {
+									enabled : false,
+								},
+								innerSize : '60%'
+							}
+						},
+						tooltip : {
+							formatter : function() {
+								return '<b>' + this.series.name + '</b><br/>'
+										+ this.point.y + ' '
+										+ this.point.name.toLowerCase();
+							}
 						}
-					},
-					plotOptions : {
-						pie : {
-							allowPointSelect : true,
-							cursor : 'pointer',
-							dataLabels : {
-								enabled : false,
-							},
-							innerSize : '60%'
-						}
-					},
-					tooltip : {
-						formatter : function() {
-							return '<b>' + this.series.name + '</b><br/>'
-									+ this.point.y + ' '
-									+ this.point.name.toLowerCase();
-						}
-					}
-				});
+					});
+			
+			
+		});
+		
 	</script>
 </body>
 </html>

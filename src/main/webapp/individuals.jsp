@@ -11,9 +11,9 @@
 </head>
 <body>
 	<jsp:include page="inc/nav.jsp"></jsp:include>
-	<div class="container pt-0">
+	<div class="container mt-4">
 		<nav aria-label="breadcrumb">
-		<ol class="breadcrumb">
+		<ol class="breadcrumb bg-white">
 			<li class="breadcrumb-item"><a class="text-muted"
 				href="/analytics.jsp">Teams</a></li>
 			<li class="breadcrumb-item " aria-current="page"><a
@@ -22,7 +22,9 @@
 		</nav>
 		<div class="row">
 			<div class="col-md-12 p-0 m-0">
+			<%for(int i=0; i<10;i++){ %>
 				<div class="card p-4 m-4 ">
+				<a  class="bg-transparent text-muted nohover" href="individuals_report.jsp">
 					<div class="row">
 						<div class="col-2">
 							<img
@@ -72,7 +74,9 @@
 							</div>
 						</div>
 					</div>
+					</a>
 				</div>
+				<%} %>
 
 			</div>
 		</div>

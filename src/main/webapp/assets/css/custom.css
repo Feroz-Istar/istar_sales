@@ -1,3 +1,7 @@
+body{
+	background: #e8e8e8 !important;
+}
+
 /* start of  font color related css*/
 
 .theme-text{
@@ -13,6 +17,12 @@
 	color: #7aaccb !important;
 }
 
+.color-transparent{
+	color: transparent !important;
+}
+.color-white{
+	color: #ffffff !important;
+}
 /* end of  font color related css*/
 
 /* start of  background color related css*/
@@ -182,3 +192,11 @@
 }
 }
 /* end of  font size related css*/
+
+/* start of a tag related css*/
+a.nohover:hover{
+	text-decoration: none !important;
+}
+
+/* end of a tag related css*/
+
