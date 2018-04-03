@@ -129,7 +129,7 @@ public class TaskDao implements TaskDaoImpl{
 		      List<Task> tasks = entitiesToTasks(results);     // Retrieve and convert Entities
 		      Cursor cursor = results.getCursor();   
 		      
-		      if (cursor != null ) {         // Are we paging? Save Cursor
+		      if (cursor != null && tasks.size() == pagelimit) {         // Are we paging? Save Cursor
 		          String cursorString = cursor.toWebSafeString();               // Cursors are WebSafe
 		          return new Result<>(tasks, cursorString);
 		        } else {

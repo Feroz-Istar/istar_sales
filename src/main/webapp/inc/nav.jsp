@@ -17,7 +17,7 @@
 					<span class="sr-only">(current)</span>
 			</a></li>
 			<li class="nav-item ml-3 mr-3 "><a
-				class="nav-link theme-text font-weight-normal" href="#">Analytics</a>
+				class="nav-link theme-text font-weight-normal" href="analytics.jsp">Analytics</a>
 			</li>
 			<li class="nav-item ml-3 mr-3"><a
 				class="nav-link theme-text font-weight-normal" href="#">Lead</a></li>
