@@ -18,9 +18,9 @@
 				<div class="font-32">Teams</div>
 			</div>
 			<div class="p-2">
-				<button type="button"
-					class="btn bg-theme btn-lg color-white font-18 font-weight-bold">Create
-					Team</button>
+				<a class="btn bg-theme btn-lg color-white font-18 font-weight-bold" href="#" role="button">
+					Create
+					Team</a>
 			</div>
 		</div>
 		<div class="row">
@@ -38,8 +38,7 @@
 								card title and make up the bulk of the card's content.</p>
 							<a href="#" class="card-link">Card link</a> <a href="#"
 								class="card-link">Another link</a>
-						</div> <a class="bg-transparent text-muted nohover"
-						href="individuals_report.jsp">
+						</div> </a>
 				</div>
 			</div>
 			<%
