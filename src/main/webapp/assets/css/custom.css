@@ -23,9 +23,36 @@ body{
 .color-white{
 	color: #ffffff !important;
 }
+
+.wizard-color{
+	color: #bae88a !important;
+}
+.master-color{
+	color: #7295fd !important;
+}
+.apprentice-color{
+	color: #fd6d81 !important;
+}
+.rookie-color{
+	color: #30beef !important;
+}
 /* end of  font color related css*/
 
 /* start of  background color related css*/
+
+
+.bg-wizard-color{
+	background: #bae88a !important;
+}
+.bg-master-color{
+	background: #7295fd !important;
+}
+.bg-apprentice-color{
+	background: #fd6d81 !important;
+}
+.bg-rookie-color{
+	background: #30beef !important;
+}
 
 .bg-theme{
 	background:#eb384f !important;
@@ -74,7 +101,9 @@ body{
 	    border-radius: 2rem;
 	        
 }
-
+.border-light-gray {
+    border-color: #dee2e6!important;
+}
 
 /* end of  border color related css*/
 
@@ -200,3 +229,16 @@ a.nohover:hover{
 
 /* end of a tag related css*/
 
+.small-square{
+	width:12px;
+	height:12px;
+}
+
+.glyphicon-minus-sign{
+	content: url("/assets/img/ic_remove_circle_outline_black_36px.svg");
+  margin-top: 20px;
+}
+.glyphicon-plus-sign{
+	content: url("/assets/img/ic_add_circle_outline_black_36px.svg");
+  margin-top: 20px;
+}

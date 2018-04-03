@@ -53,7 +53,7 @@ $(document).ready(function(){
 		});
 	
 	Highcharts.setOptions({
-		 colors: ['#30beef','#bae88a','#fd6d81']
+		 colors: ['#30beef','#bae88a','#fd6d81','#7295fd']
 		});
 	
 	

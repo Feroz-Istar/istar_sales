@@ -12,4 +12,6 @@ String baseURL = url.substring(0, url.length() - request.getRequestURI().length(
 <script src="<%=baseURL %>assets/js/jquery.rateyo.min.js"></script>
 <script src="<%=baseURL %>assets/js/highcharts.js"></script>
 <script src="<%=baseURL %>assets/js/data.js"></script>
+<script src="<%=baseURL %>assets/js/tree.js"></script>
+
 <script src="<%=baseURL %>assets/js/app.js"></script>

@@ -85,8 +85,9 @@ public class Authentication extends HttpServlet {
 		 * System.out.println(entity.getProperty("name")); authentic = (String)
 		 * entity.getProperty("name"); }
 		 */
-
-		if (results.size() > 0) {
+		RequestDispatcher rd = request.getRequestDispatcher("welcome.jsp");
+		rd.forward(request, response);
+		/*if (results.size() > 0) {
 			RequestDispatcher rd = request.getRequestDispatcher("welcome.jsp");
 			rd.forward(request, response);
 
@@ -114,7 +115,7 @@ public class Authentication extends HttpServlet {
 			response.setHeader("error", alertMsg);
 			rd.forward(request, response);
 
-		}
+		}*/
 	}
 
 	public  boolean emailCheck(String email) {

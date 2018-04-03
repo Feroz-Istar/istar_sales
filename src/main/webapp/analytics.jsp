@@ -99,7 +99,7 @@ table thead, table tbody tr {
 										<h3>230</h3>
 									</div>
 									<div class=" pb-4">
-										<h4 class="font-14 text-muted">Emails</h4>
+										<h4 class="font-14 text-muted">Meetings</h4>
 									</div>
 								</div>
 							</div>
@@ -112,7 +112,7 @@ table thead, table tbody tr {
 										<h3>230</h3>
 									</div>
 									<div class=" pb-4">
-										<h4 class="font-14 text-muted">Presentation</h4>
+										<h4 class="font-14 text-muted">Presentations</h4>
 									</div>
 								</div>
 							</div>
@@ -138,7 +138,7 @@ table thead, table tbody tr {
 										<h3>230</h3>
 									</div>
 									<div class=" pb-4">
-										<h4 class="font-14 text-muted">Emails</h4>
+										<h4 class="font-14 text-muted">Webinar</h4>
 									</div>
 								</div>
 							</div>
