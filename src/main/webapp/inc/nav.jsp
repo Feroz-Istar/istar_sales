@@ -20,7 +20,7 @@
 				class="nav-link theme-text font-weight-normal" href="analytics.jsp">Analytics</a>
 			</li>
 			<li class="nav-item ml-3 mr-3"><a
-				class="nav-link theme-text font-weight-normal" href="#">Lead</a></li>
+				class="nav-link theme-text font-weight-normal" href="lead.jsp">Lead</a></li>
 			<li class="nav-item ml-3 mr-3"><a
 				class="nav-link theme-text font-weight-normal" href="team.jsp">Team</a></li>
 			<li class="nav-item ml-3 mr-3"><a
