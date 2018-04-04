@@ -1,244 +1,327 @@
-body{
+body {
 	background: #e8e8e8 !important;
 }
 
 /* start of  font color related css*/
-
-.theme-text{
-	color:rgb(51, 51, 51) !important;
-	
+.theme-text {
+	color: rgb(51, 51, 51) !important;
 }
 
-.theme-color{
-	color:#eb384f !important;
+.theme-color {
+	color: #eb384f !important;
 }
 
-.color-sky{
+.color-sky {
 	color: #7aaccb !important;
 }
 
-.color-transparent{
+.color-transparent {
 	color: transparent !important;
 }
-.color-white{
+
+.color-white {
 	color: #ffffff !important;
 }
 
-.wizard-color{
+.wizard-color {
 	color: #bae88a !important;
 }
-.master-color{
+
+.master-color {
 	color: #7295fd !important;
 }
-.apprentice-color{
+
+.apprentice-color {
 	color: #fd6d81 !important;
 }
-.rookie-color{
+
+.rookie-color {
 	color: #30beef !important;
 }
 /* end of  font color related css*/
 
 /* start of  background color related css*/
-
-
-.bg-wizard-color{
+.bg-wizard-color {
 	background: #bae88a !important;
 }
-.bg-master-color{
+
+.bg-master-color {
 	background: #7295fd !important;
 }
-.bg-apprentice-color{
+
+.bg-apprentice-color {
 	background: #fd6d81 !important;
 }
-.bg-rookie-color{
+
+.bg-rookie-color {
 	background: #30beef !important;
 }
 
-.bg-theme{
-	background:#eb384f !important;
-}
-.bg-white{
-		background:#ffffff !important;
+.bg-theme {
+	background: #eb384f !important;
 }
 
-.bg-dropdown{
-	
+.bg-white {
+	background: #ffffff !important;
+}
+
+.bg-dropdown {
 	background: #f5f5f5 !important;
 }
-.bg-transparent{
-	background:transparent !important;
+
+.bg-transparent {
+	background: transparent !important;
 }
 
 /* end of  background color related css*/
-
-.profile_image{
-	   background:url('../../assets/img/d.png') no-repeat left center;
-	
+.profile_image {
+	background: url('../../assets/img/d.png') no-repeat left center;
 }
-.size_15{
-	height:35px;
-	width:35px;
+
+.size_15 {
+	height: 35px;
+	width: 35px;
 	border-left: 1px solid gray;
-	
 }
 
 /* start of  border color related css*/
+.border-top-completed {
+	border-top: 2px solid #eb384f !important;
+}
 
-.border-top-completed{
-	border-top:4px solid #eb384f!important;
+.border-top-ongoing {
+	border-top: 2px solid #37a447 !important;
 }
-.border-top-ongoing{
-	border-top:4px solid #37a447!important;
+
+.border-top-scheduled {
+	border-top: 2px solid #319ef3 !important;
 }
-.border-top-scheduled{
-	border-top:4px solid #319ef3!important;
+
+.ml-auto {
+	margin-left: auto !important;
 }
-.ml-auto{
-	margin-left:auto !important;
-}
-.sky-blue-border{
+
+.sky-blue-border {
 	border: 2px solid #7aaccb;
-	    border-radius: 2rem;
-	        
+	border-radius: 2rem;
 }
+
 .border-light-gray {
-    border-color: #dee2e6!important;
+	border-color: #dee2e6 !important;
 }
 
 /* end of  border color related css*/
 
-
-
 /* start of  button related css*/
-
-.sky-blue-border:hover,.sky-blue-border:active{
+.sky-blue-border:hover, .sky-blue-border:active {
 	background-color: transparent !important;
-    border-color:  #7aaccb !important; 
+	border-color: #7aaccb !important;
 }
-.custom-sm-icon-button{
+
+.custom-sm-icon-button {
 	min-width: 67px;
 	max-height: 30px;
 	padding: 1px !important;
 }
 
-.custom-lg-icon-button{
+.custom-lg-icon-button {
 	min-width: 90px;
 	max-height: 60px;
 	padding: 5px !important;
 }
 
-.btn.focus, .btn:focus{
-	    box-shadow: 0 0 0 transparent !important;
-	
+.btn.focus, .btn:focus {
+	box-shadow: 0 0 0 transparent !important;
 }
 /* end of  button related css*/
 
-
-
-
 /* start of  font size related css*/
-.material-icons.md-48 { font-size: 48px; }
+.material-icons.md-48 {
+	font-size: 48px;
+}
 
-.font-10{
-	font-size: 0.625rem!important;
+.font-10 {
+	font-size: 0.625rem !important;
 }
-.font-11{
-	font-size: 0.6875rem!important;
+
+.font-11 {
+	font-size: 0.6875rem !important;
 }
-.font-12{
-	font-size: 0.75rem!important;
+
+.font-12 {
+	font-size: 0.75rem !important;
 }
-.font-13{
-	font-size: 0.8125rem!important;
+
+.font-13 {
+	font-size: 0.8125rem !important;
 }
-.font-14{
-	font-size: 0.875rem!important;
+
+.font-14 {
+	font-size: 0.875rem !important;
 }
-.font-15{
-	font-size: 0.9375rem!important;
+
+.font-15 {
+	font-size: 0.9375rem !important;
 }
-.font-16{
-	font-size: 1rem!important;
+
+.font-16 {
+	font-size: 1rem !important;
 }
-.font-17{
-	font-size: 1.0625rem!important;
+
+.font-17 {
+	font-size: 1.0625rem !important;
 }
-.font-18{
-	font-size: 1.125rem!important;
+
+.font-18 {
+	font-size: 1.125rem !important;
 }
-.font-19{
-	font-size: 1.1875rem!important;
+
+.font-19 {
+	font-size: 1.1875rem !important;
 }
-.font-20{
-	font-size: 1.25rem!important;
+
+.font-20 {
+	font-size: 1.25rem !important;
 }
-.font-32{
-	font-size: 2rem!important;
+
+.font-21 {
+	font-size: 1.3125rem !important;
+}
+
+.font-22 {
+	font-size: 1.375rem !important;
+}
+
+.font-23 {
+	font-size: 1.4375rem !important;
+}
+
+.font-24 {
+	font-size: 1.5rem !important;
+}
+
+.font-25 {
+	font-size: 1.5625rem !important;
+}
+
+.font-26 {
+	font-size: 1.625rem !important;
+}
+
+.font-27 {
+	font-size: 1.6875rem !important;
+}
+
+.font-28 {
+	font-size: 1.75rem !important;
+}
+
+.font-29 {
+	font-size: 1.8125rem !important;
+}
+
+.font-30 {
+	font-size: 1.875rem !important;
+}
+
+.font-31 {
+	font-size: 1.9375rem !important;
+}
+
+.font-32 {
+	font-size: 1.5rem !important;
 }
 
 @media only screen and (max-width: 600px) {
-	.font-10{
-	font-size: 0.525rem!important;
-}
-.font-11{
-	font-size:  0.625rem!important;
-}
-.font-12{
-	font-size:0.6875rem!important;
-}
-.font-13{
-	font-size: 0.75rem!important;
-}
-.font-14{
-	font-size: 0.8125rem!important;
-}
-.font-15{
-	font-size: 0.875rem!important;
-}
-	.font-16{
-	font-size:  0.9375rem!important;
-}
-	
-	.font-17{
-	font-size: 1rem!important;
-}
-	
-	
-	.font-18{
-	font-size: 1.0625rem!!important;
-}
-	
-	.font-19{
-	font-size: 1.125rem!important;
-}
-	
-	.font-20{
-	font-size: 1.25rem!important;
-}
-	
-   .font-32{
-	font-size: 1.5rem!important;
-}
+	.font-10 {
+		font-size: 0.525rem !important;
+	}
+	.font-11 {
+		font-size: 0.625rem !important;
+	}
+	.font-12 {
+		font-size: 0.6875rem !important;
+	}
+	.font-13 {
+		font-size: 0.75rem !important;
+	}
+	.font-14 {
+		font-size: 0.8125rem !important;
+	}
+	.font-15 {
+		font-size: 0.875rem !important;
+	}
+	.font-16 {
+		font-size: 0.9375rem !important;
+	}
+	.font-17 {
+		font-size: 1rem !important;
+	}
+	.font-18 {
+		font-size: 1.0625rem !important;
+	}
+	.font-19 {
+		font-size: 1.125rem !important;
+	}
+	.font-20 {
+		font-size: 1.25rem !important;
+	}
+	.font-21 {
+		font-size: 1.3125rem !important;
+	}
+	.font-22 {
+		font-size: 1.375rem !important;
+	}
+	.font-23 {
+		font-size: 1.4375rem !important;
+	}
+	.font-24 {
+		font-size: 1.5rem !important;
+	}
+	.font-25 {
+		font-size: 1.5625rem !important;
+	}
+	.font-26 {
+		font-size: 1.625rem !important;
+	}
+	.font-27 {
+		font-size: 1.6875rem !important;
+	}
+	.font-28 {
+		font-size: 1.75rem !important;
+	}
+	.font-29 {
+		font-size: 1.8125rem !important;
+	}
+	.font-30 {
+		font-size: 1.875rem !important;
+	}
+	.font-31 {
+		font-size: 1.9375rem !important;
+	}
+	.font-32 {
+		font-size: 1.5rem !important;
+	}
 }
 /* end of  font size related css*/
 
 /* start of a tag related css*/
-a.nohover:hover{
+a.nohover:hover {
 	text-decoration: none !important;
 }
 
 /* end of a tag related css*/
-
-.small-square{
-	width:12px;
-	height:12px;
+.small-square {
+	width: 12px;
+	height: 12px;
 }
 
-.glyphicon-minus-sign{
+.glyphicon-minus-sign {
 	content: url("/assets/img/ic_remove_circle_outline_black_36px.svg");
-  margin-top: 20px;
+	margin-top: 20px;
 }
-.glyphicon-plus-sign{
+
+.glyphicon-plus-sign {
 	content: url("/assets/img/ic_add_circle_outline_black_36px.svg");
-  margin-top: 20px;
+	margin-top: 20px;
 }
