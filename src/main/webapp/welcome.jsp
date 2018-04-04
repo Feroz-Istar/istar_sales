@@ -19,10 +19,10 @@
 
 <body style="">
 	<jsp:include page="inc/nav.jsp"></jsp:include>
-	<main role="main" class="container">
+	<main role="main" class="container ">
 
-	<h4 class="mt-3">Today's Task</h4>
-	<div class="slider autoplay">
+	<h3 class="mt-4 pt-1 ml-2 mb-0	 font-28">Today's Tasks</h3>
+	<div class="slider autoplay pt-3 mt-4">
 		<%
 			for (int i = 0; i <= 10; i++) {
 				String border_top = "border-top-ongoing";
@@ -46,36 +46,38 @@
 				<div class="row">
 					<div class="col-md-3">
 						<img src="https://www.w3schools.com/html/img_girl.jpg" alt="..."
-							class="img-thumbnail border-0">
+							class="img-thumbnail rounded border-0  ">
 					</div>
 					<div class="col-5">
-						<div class="font-weight-normal font-13">Sales Call</div>
-						<div class="font-weight-bold font-14">Dell</div>
-						<div class="font-weight-normal font-13">Ram Verma</div>
+						<div class="font-weight-normal   font-13"
+							style="color: rgb(85, 85, 85);">Sales Call</div>
+						<div class="font-weight-bold   font-16">Dell</div>
+						<div class="font-weight-normal text-muted font-13">Ram Verma</div>
 					</div>
 					<div class="col-4 text-center">
-						<div class="font-14">Not Started</div>
-						<i class="material-icons font-32 mt-1"><%=icon_name%></i>
+						<div class="font-14 text-muted ">Not Started</div>
+						<i class="material-icons text-danger font-32 mt-1"><%=icon_name%></i>
 					</div>
 				</div>
 				<hr>
 				<div class="row">
 					<div class="col-4">
-						<div class="text-muted font-14 text-center">Start Time</div>
+						<div class="  font-15 text-center" style="color: #d4cfcf;">Start
+							Time</div>
 					</div>
 					<div class="col-4">
-						<div class="text-muted font-14 text-center">Duration</div>
+						<div class="  font-15 text-center" style="color: #d4cfcf;">Duration</div>
 					</div>
 					<div class="col-4">
-						<div class="text-muted font-14 text-center">Score</div>
+						<div class="  font-15 text-center" style="color: #d4cfcf;">Score</div>
 					</div>
 				</div>
 				<div class="row">
 					<div class="col-4">
-						<div class="font-12 font-weight-bold text-center">12:30 PM</div>
+						<div class="font-15  text-center">12:30 PM</div>
 					</div>
 					<div class="col-4">
-						<div class="font-12 font-weight-bold text-center">45 Minutes</div>
+						<div class="font-15   text-center">45 Minutes</div>
 					</div>
 					<div class="col-4  align-self-center">
 						<div>
@@ -92,39 +94,53 @@
 		%>
 
 	</div>
-	<h4 class="mt-3">Team Performance</h4>
+	<div class=" font-28 mt-4 ml-2" style="color: rgb(74, 74, 74);">Performance</div>
+	<nav aria-label="breadcrumb  ">
+		<ol class="breadcrumb  bg-transparent pl-2 ">
+			<li class="breadcrumb-item font-23    "><a class="" href="#"
+				style="color: rgb(74, 74, 74);">Team Wise</a></li>
+			<li class="breadcrumb-item font-23  " aria-current="page"><a
+				class="" href="#" style="color: rgb(74, 74, 74);">Product Wise</a></li>
+			<li class="breadcrumb-item  font-23   " aria-current="page"><a
+				class="" href="#" style="color: rgb(74, 74, 74);">Geographical
+					Area Wise</a></li>
+
+		</ol>
+	</nav>
 
 	<div class="row">
+
 		<div class="col-md-12">
 			<div class="card">
 				<div class="helloworld d-flex justify-content-end p-2">
 					<div class="btn-group ml-2 mr-2">
-						<button type="button" class="btn bg-dropdown dropdown-toggle"
-							data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-							Right-aligned menu</button>
+						<button type="button"
+							class="btn bg-dropdown dropdown-toggle text-muted border-top border-left font-12"
+							data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Weekly</button>
 						<div class="dropdown-menu dropdown-menu-right">
-							<button class="dropdown-item" type="button">Action</button>
-							<button class="dropdown-item" type="button">Another
+							<button class="dropdown-item font-12" type="button">Weekly</button>
+							<button class="dropdown-item font-12" type="button">Monthly
 								action</button>
-							<button class="dropdown-item" type="button">Something
+							<button class="dropdown-item font-12" type="button">Annually
 								else here</button>
 						</div>
 					</div>
 					<div class="btn-group  ml-2 mr-2">
-						<button type="button" class="btn bg-dropdown dropdown-toggle"
-							data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-							Right-aligned menu</button>
+						<button type="button"
+							class="btn bg-dropdown dropdown-toggle text-muted  border-top border-left font-12"
+							data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Quantitative
+							Performance</button>
 						<div class="dropdown-menu dropdown-menu-right">
-							<button class="dropdown-item" type="button">Action</button>
-							<button class="dropdown-item" type="button">Another
-								action</button>
-							<button class="dropdown-item" type="button">Something
-								else here</button>
+							<button class="dropdown-item  font-12" type="button">quantitative
+								performance</button>
+							<button class="dropdown-item font-12" type="button">quantitative
+								performance</button>
+
 						</div>
 					</div>
 				</div>
 				<div class="highchart_container" data-tableid="datatable"
-					data-title="this is my graph"></div>
+					data-title=""></div>
 
 				<table id="datatable" style="display: none;">
 					<thead>
@@ -177,7 +193,6 @@
 		</div>
 
 	</div>
-
 
 
 	<div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog"
@@ -290,18 +305,24 @@
 						<div class="row p-3">
 							<div class="col-6">
 								<h4>Location</h4>
-								<div class="card d-flex" >
-									<div id="map" style="height: 300px;width: 100%;"></div>
-									<div class="map_error_div  text-center" style="position:absolute;height: 300px;width: 100%;margin:auto;">
-									<div class="error_msg theme-color" style="position: relative;top: 50%;transform: translateY(-50%);">Please Allow Location in your browser to view the map</div></div>
-									
+								<div class="card d-flex">
+									<div id="map" style="height: 300px; width: 100%;"></div>
+									<div class="map_error_div  text-center"
+										style="position: absolute; height: 300px; width: 100%; margin: auto;">
+										<div class="error_msg theme-color"
+											style="position: relative; top: 50%; transform: translateY(-50%);">Please
+											Allow Location in your browser to view the map</div>
+									</div>
+
 								</div>
 							</div>
 							<div class="col-6">
 								<h4>Presentation</h4>
-								<div class="card" >
-									<img  src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQrBe15UtESAPeZA27aFmCjb1cPIgrlCR5UH4LyeC3DdhmvY4hu" alt="Card image cap" style="height: 300px;width: 100%;">
-									
+								<div class="card">
+									<img
+										src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQrBe15UtESAPeZA27aFmCjb1cPIgrlCR5UH4LyeC3DdhmvY4hu"
+										alt="Card image cap" style="height: 300px; width: 100%;">
+
 								</div>
 							</div>
 
@@ -317,7 +338,7 @@
 
 
 
-	
+
 
 	<!-- Bootstrap core JavaScript
     ================================================== -->

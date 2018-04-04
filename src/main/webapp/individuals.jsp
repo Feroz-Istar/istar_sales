@@ -5,7 +5,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport"
-	content="width=device-width, initial-scale=1, shrink-to-fit=no"><title>Insert title here</title>
+	content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>Insert title here</title>
 <jsp:include page="inc/head.jsp"></jsp:include>
 
 </head>
@@ -22,61 +23,70 @@
 		</nav>
 		<div class="row">
 			<div class="col-md-12 p-0 m-0">
-			<%for(int i=0; i<10;i++){ %>
+				<%
+					for (int i = 0; i < 10; i++) {
+				%>
 				<div class="card p-4 m-4 ">
-				<a  class="bg-transparent text-muted nohover" href="individuals_report.jsp">
-					<div class="row">
-						<div class="col-2">
-							<img
-								src="http://www.ihindiwishes.com/wp-content/uploads/2018/01/Happy-Whatsapp-DP-Images.jpg"
-								alt="..." class="img-thumbnail border-0	 ">
-						</div>
-						<div class="col-10">
-							<div class="font-weight-bold font-25 mb-1">Yogesh Jain</div>
-							<div class="rateYo p-0 font-12 align-self-center"
-								data-rating="3.2" data-width="15"></div>
-							<div class="row ml-0 mr-0 mt-3 mb-1">
-								<div class="col-2 text-left pl-0 pr-0">
-									<i class="material-icons md-36 color-sky">phone_forwarded</i>
+					<a class="bg-transparent text-muted nohover"
+						href="individuals_report.jsp">
+						<div class="row">
+							<div class="col-2">
+								<img
+									src="https://sprogsyd.dk/wp-content/uploads/2017/07/476085198-1.jpg"
+									alt="..." class="img-thumbnail border-0	 ">
+							</div>
+							<div class="col-10">
+								<div>
+									<h3 class="font-weight-bold font-25 mb-1 text-dark">Yogesh
+										Jain</h3>
+								</div>
+								<div class="rateYo p-0 font-12 align-self-center"
+									data-rating="3.2" data-width="15"></div>
+								<div class="row ml-0 mr-0 mt-3 mb-1">
+									<div class="col-2 text-left pl-0 pr-0">
+										<i class="material-icons md-36 color-sky">phone_forwarded</i>
 
-								</div>
-								<div class="col-2 text-center pl-0 pr-0">
-									<i class="material-icons  md-36 color-sky">library_books</i>
-								</div>
-								<div class="col-2 text-center pl-0 pr-0">
-									<i class="material-icons md-36 color-sky">group</i>
+									</div>
+									<div class="col-2 text-center pl-0 pr-0">
+										<i class="material-icons  md-36 color-sky">library_books</i>
+									</div>
+									<div class="col-2 text-center pl-0 pr-0">
+										<i class="material-icons md-36 color-sky">group</i>
 
-								</div>
-								<div class="col-2 text-center pl-0 pr-0">
-									<i class="material-icons md-36 color-sky">mail_outline</i>
+									</div>
+									<div class="col-2 text-center pl-0 pr-0">
+										<i class="material-icons md-36 color-sky">mail_outline</i>
 
-								</div>
-								<div class="col-2 text-center pl-0 pr-0">
-									<i class="material-icons md-36 color-sky">tv</i>
+									</div>
+									<div class="col-2 text-center pl-0 pr-0">
+										<i class="material-icons md-36 color-sky">tv</i>
 
+									</div>
+									<div class="col-2 text-center pl-0 pr-0">
+										<i class="material-icons  md-36 color-sky">multiline_chart</i>
+									</div>
 								</div>
-								<div class="col-2 text-center pl-0 pr-0">
-								<i class="material-icons  md-36 color-sky">multiline_chart</i>
+								<div class="row ml-0 mr-0">
+									<div class="col-2 text-left  text-muted  font-14 pl-0 pr-0">112
+										Calls</div>
+									<div class="col-2 text-center text-muted  font-14 pl-0 pr-0">85
+										Presentations</div>
+									<div class="col-2 text-center text-muted  font-14 pl-0 pr-0">85
+										Meeting</div>
+									<div class="col-2 text-center  text-muted  font-14 pl-0 pr-0">85
+										Mails</div>
+									<div class="col-2 text-center text-muted  font-14  pl-0 pr-0">10
+										Webinars</div>
+									<div class="col-2 text-center text-muted  font-14 pl-0 pr-0">500
+										Target Achieved</div>
 								</div>
 							</div>
-							<div class="row ml-0 mr-0">
-								<div class="col-2 text-left  text-muted  font-14 pl-0 pr-0">112 Calls</div>
-								<div class="col-2 text-center text-muted  font-14 pl-0 pr-0">85
-									Presentations</div>
-								<div class="col-2 text-center text-muted  font-14 pl-0 pr-0">85
-									Meeting</div>
-								<div class="col-2 text-center  text-muted  font-14 pl-0 pr-0">85
-									Mails</div>
-								<div class="col-2 text-center text-muted  font-14  pl-0 pr-0">10
-									Webinars</div>
-								<div class="col-2 text-center text-muted  font-14 pl-0 pr-0">500
-									Target Achieved</div>
-							</div>
 						</div>
-					</div>
 					</a>
 				</div>
-				<%} %>
+				<%
+					}
+				%>
 
 			</div>
 		</div>

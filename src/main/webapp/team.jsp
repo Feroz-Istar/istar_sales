@@ -15,29 +15,27 @@
 	<div class="container mt-4">
 		<div class="d-flex">
 			<div class="mr-auto p-2">
-				<div class="font-32">Teams</div>
+				<div class="font-28 ">Teams</div>
 			</div>
-			<div class="p-2">
+			<div class="p-2 mt-3">
 				<a class="btn bg-theme btn-lg color-white font-18 font-weight-bold" href="#" role="button">
-					Create
-					Team</a>
+					Create	Team</a>
 			</div>
 		</div>
 		<div class="row">
 			<%
 				for (int i = 1; i < 12; i++) {
 			%>
-			<div class="col-3">
-				<div class="card p-2 mb-3">
-					<a class="bg-transparent text-muted nohover"
+			<div class="col-3 ">
+				<div class="card p-2 mb-3  border border-dark ">
+					<a class="bg-transparent text-muted nohover "
 						href="view_team_member_list.jsp">
 
-						<div class="card-body">
-							<h5 class="card-title">Card title</h5>
-							<p class="card-text">Some quick example text to build on the
-								card title and make up the bulk of the card's content.</p>
-							<a href="#" class="card-link">Card link</a> <a href="#"
-								class="card-link">Another link</a>
+						<div class="card-body p-1 m-1 ">
+							<h5 class="card-title text-danger">Card title</h5>
+							<p class="card-text text-muted font-weight-bold text-justify font-14"> 	Some quick example text to build on the  card title .</p>
+							<a href="#" class="card-link "><span class="pt-3">Card link</span></a>
+							 <a href="#" class="card-link mt-2">Another link</a>
 						</div> </a>
 				</div>
 			</div>
