@@ -1,3 +1,16 @@
+<%@page import="pojo.SalesTeamPerformancePojo"%>
+<%@page import="pojo.GraphPojo"%>
+ 
+<%@page import="com.google.gson.Gson"%>
+<%@page import="com.google.gson.GsonBuilder"%>
+<%@page import="com.google.gson.JsonParser"%>
+<%@page import="java.util.ArrayList"%>
+<%@page import="pojo.SalesTodaysTaskPojo"%>
+ 
+<%@page import="java.lang.reflect.Type"%>
+<%@page import="com.google.gson.reflect.TypeToken"%>
+
+<%@page import="utils.HttpUtilsRequest"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <!doctype html>
@@ -14,6 +27,29 @@
 
 <!-- Bootstrap core CSS -->
 <jsp:include page="inc/head.jsp"></jsp:include>
+//service return ArrayListOf Cards
+
+
+<%
+
+	String res = HttpUtilsRequest
+			.sendGet("http://192.168.1.18:8080/istar/rest/sales/dashboard/3/todays_tasks");
+	//new JsonParser().parse(res).getAsJsonArray()
+ArrayList<SalesTodaysTaskPojo> salesTodaysTaskPojos=new ArrayList<>();
+	   salesTodaysTaskPojos =  new Gson().fromJson(res,
+			new TypeToken<ArrayList<SalesTodaysTaskPojo>>() {
+			}.getType());
+
+%>
+
+<%
+
+	String performance_response = HttpUtilsRequest
+			.sendGet("http://192.168.1.18:8080/istar/rest/sales/dashboard/3/get_team_performance");
+	//new JsonParser().parse(res).getAsJsonArray()
+SalesTeamPerformancePojo salesTeamPerformancePojo =  new Gson().fromJson(performance_response,SalesTeamPerformancePojo.class);
+
+%>
 
 </head>
 
@@ -24,17 +60,65 @@
 	<h3 class="mt-4 pt-1 ml-2 mb-0	 font-28">Today's Tasks</h3>
 	<div class="slider autoplay pt-3 mt-4">
 		<%
-			for (int i = 0; i <= 10; i++) {
+			for (SalesTodaysTaskPojo salesTodaysTaskPojo: salesTodaysTaskPojos ) {
+				
+				int i = 8;
 				String border_top = "border-top-ongoing";
+				String task_icon_color="";
 				String icon_name = "desktop_windows";
-				if (i % 2 == 0) {
-					border_top = "border-top-completed";
-					icon_name = "desktop_windows";
+				String task_type="";
+				if(salesTodaysTaskPojo.getTaskType().equalsIgnoreCase("SALES_CALL_TASK")){
+					
+					task_type = "Sales Call";
+					
+				}else if(salesTodaysTaskPojo.getTaskType().equalsIgnoreCase("SALES_WEBINAR_PROJECT")){
+					task_type = "Sales Webinar";
+					
+				}else if(salesTodaysTaskPojo.getTaskType().equalsIgnoreCase("SALES_PRESANTATION_TASK")){
+					
+					task_type=	"Sales Presentation";
 				}
-				if (i % 3 == 0) {
+				
+				if (salesTodaysTaskPojo.getStatus().equalsIgnoreCase("SCHEDULED")) {
+					border_top = "border-top-scheduled ";
+					task_icon_color="scheduled-color";
+ 				}else if(salesTodaysTaskPojo.getStatus().equalsIgnoreCase("ONGOING")){
+					border_top = "border-top-ongoing";
+
+				}else if(salesTodaysTaskPojo.getStatus().equalsIgnoreCase("COMPLETED")){
+					border_top = "border-top-completed";
+
+				}
+				if (salesTodaysTaskPojo.getTaskType().equalsIgnoreCase("SALES_CALL_TASK")) {
 					border_top = "border-top-scheduled";
 					icon_name = "local_phone";
+				}else if(salesTodaysTaskPojo.getTaskType().equalsIgnoreCase("SALES_WEBINAR_PROJECT")){
+					border_top = "border-top-scheduled";
+					icon_name = "local_phone";
+				}else if(salesTodaysTaskPojo.getTaskType().equalsIgnoreCase("SALES_WEBINAR_PROJECT")){
+					border_top = "border-top-scheduled";
+					icon_name = "local_phone";	
+					
 				}
+				
+				String duration="";
+				int hour=0;
+				int min=0;
+				int sec=0;
+				if(salesTodaysTaskPojo.getDuration()/3600 > 0){
+					hour=salesTodaysTaskPojo.getDuration()/3600;
+					duration+=hour+" Hr";
+				}
+				if(salesTodaysTaskPojo.getDuration()/60 > 0){
+					min=salesTodaysTaskPojo.getDuration()/60;
+					duration+=min+" Min ";
+				}
+				if(salesTodaysTaskPojo.getDuration()%60 > 0){
+					sec=salesTodaysTaskPojo.getDuration()%60;
+					duration+=sec+" Sec";
+				}
+				
+				
 		%>
 
 
@@ -45,18 +129,18 @@
 
 				<div class="row">
 					<div class="col-md-3">
-						<img src="https://www.w3schools.com/html/img_girl.jpg" alt="..."
+						<img src="<%=salesTodaysTaskPojo.getProfileImage() %>" alt="..."
 							class="img-thumbnail rounded border-0  ">
 					</div>
 					<div class="col-5">
 						<div class="font-weight-normal   font-13"
-							style="color: rgb(85, 85, 85);">Sales Call</div>
-						<div class="font-weight-bold   font-16">Dell</div>
-						<div class="font-weight-normal text-muted font-13">Ram Verma</div>
+							style="color: rgb(85, 85, 85);"><%=task_type%></div>
+						<div class="font-weight-bold   font-16"><%=salesTodaysTaskPojo.getCompanyName() %></div>
+						<div class="font-weight-normal text-muted font-13"><%=salesTodaysTaskPojo.getActorName() %></div>
 					</div>
 					<div class="col-4 text-center">
-						<div class="font-14 text-muted ">Not Started</div>
-						<i class="material-icons text-danger font-32 mt-1"><%=icon_name%></i>
+						<div class="font-14 text-muted "><%=salesTodaysTaskPojo.getStatus() %></div>
+						<i class="material-icons <%= task_icon_color%>  font-32 mt-1"><%=icon_name%></i>
 					</div>
 				</div>
 				<hr>
@@ -74,14 +158,14 @@
 				</div>
 				<div class="row">
 					<div class="col-4">
-						<div class="font-15  text-center">12:30 PM</div>
+						<div class="font-15  text-center"><%=salesTodaysTaskPojo.getStartTime() %></div>
 					</div>
 					<div class="col-4">
-						<div class="font-15   text-center">45 Minutes</div>
+						<div class="font-15   text-center"><%=duration %></div>
 					</div>
 					<div class="col-4  align-self-center">
 						<div>
-							<div class="rateYo p-0 font-12 text-center" data-rating="3.2"
+							<div class="rateYo p-0 font-12 text-center" data-rating="<%=salesTodaysTaskPojo.getRating() %>"
 								data-width="12"></div>
 						</div>
 					</div>
@@ -98,9 +182,9 @@
 	<nav aria-label="breadcrumb  ">
 		<ol class="breadcrumb  bg-transparent pl-2 ">
 			<li class="breadcrumb-item font-23    "><a class="" href="#"
-				style="color: rgb(74, 74, 74);">Team Wise</a></li>
+			 onclick="createCustomGraph('http://192.168.1.18:8080/istar/rest/sales/dashboard/3/get_team_performance')"	style="color: rgb(74, 74, 74);">Team Wise</a></li>
 			<li class="breadcrumb-item font-23  " aria-current="page"><a
-				class="" href="#" style="color: rgb(74, 74, 74);">Product Wise</a></li>
+			id="productwise"	class="" href="#" style="color: rgb(74, 74, 74);" onclick="createCustomGraph('http://192.168.1.18:8080/istar/rest/sales/dashboard/3/get_product_performance')" >Product Wise</a></li>
 			<li class="breadcrumb-item  font-23   " aria-current="page"><a
 				class="" href="#" style="color: rgb(74, 74, 74);">Geographical
 					Area Wise</a></li>
@@ -138,52 +222,32 @@
 
 						</div>
 					</div>
-				</div>
+				</div><div id="highchart_container1" class="highchart_container1" data-tableid="datatable"
+					data-title=""></div>
 				<div class="highchart_container" data-tableid="datatable"
 					data-title=""></div>
 
-				<table id="datatable" style="display: none;">
+				<table id="datatable" style="display: none;" >
+				
 					<thead>
 						<tr>
-							<th></th>
-							<th>Jane</th>
-							<th>John</th>
-							<th>teen</th>
-
+						<th></th>
+						<%for(GraphPojo graphPojo: salesTeamPerformancePojo.getGraph()){ %>
+							<th><%=graphPojo.getName() %></th>
+							  <%} %>
 						</tr>
 					</thead>
 					<tbody>
+					<%for(String groupName: salesTeamPerformancePojo.getGroups()){ 
+						int sizeData=salesTeamPerformancePojo.getGroups().size();%>
 						<tr>
-							<th>Apples</th>
-							<td>3</td>
-							<td>4</td>
-							<td>4</td>
+							<th><%=groupName %></th>
+							<%for(GraphPojo graphPojo: salesTeamPerformancePojo.getGraph()){ %>
+							<td><%=graphPojo.getData().get(sizeData-1) %></td>
+							  <%} %>
+							 
 						</tr>
-						<tr>
-							<th>Pears</th>
-							<td>2</td>
-							<td>4</td>
-							<td>0</td>
-						</tr>
-						<tr>
-							<th>Plums</th>
-							<td>5</td>
-							<td>9</td>
-							<td>11</td>
-						</tr>
-						<tr>
-							<th>Bananas</th>
-							<td>1</td>
-							<td>1</td>
-							<td>4</td>
-
-						</tr>
-						<tr>
-							<th>Oranges</th>
-							<td>2</td>
-							<td>4</td>
-							<td>14</td>
-						</tr>
+						<% }%> 
 					</tbody>
 				</table>
 
@@ -335,7 +399,13 @@
 	</div>
 
 	</main>
+<script type="text/javascript">
 
+function productwise(){
+	
+}
+
+</script>
 
 
 

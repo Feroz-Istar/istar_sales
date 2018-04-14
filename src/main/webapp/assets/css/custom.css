@@ -96,7 +96,15 @@ body {
 .border-top-scheduled {
 	border-top: 2px solid #319ef3 !important;
 }
-
+.scheduled-color{
+	color:#319ef3 !important;
+}
+.ongoing-color{
+	color:#37a447 !important;
+}
+.completed-color{
+	color:#eb384f !important;	
+}
 .ml-auto {
 	margin-left: auto !important;
 }

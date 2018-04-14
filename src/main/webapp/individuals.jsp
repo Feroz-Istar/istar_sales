@@ -1,3 +1,8 @@
+<%@page import="pojo.SalesAnalyticsIndividualPojo"%>
+<%@page import="com.google.appengine.repackaged.com.google.gson.reflect.TypeToken"%>
+<%@page import="com.google.appengine.repackaged.com.google.gson.Gson"%>
+<%@page import="java.util.ArrayList"%>
+<%@page import="utils.HttpUtilsRequest"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -11,6 +16,17 @@
 
 </head>
 <body>
+
+<%
+		String res = HttpUtilsRequest.sendGet("http://192.168.1.18:8080/istar/rest/sales/analytics/team/3");
+		//new JsonParser().parse(res).getAsJsonArray()
+		ArrayList<SalesAnalyticsIndividualPojo> salesAnalyticsIndividualPojos = new ArrayList<>();
+		salesAnalyticsIndividualPojos = new Gson().fromJson(res, new TypeToken<ArrayList<SalesAnalyticsIndividualPojo>>() {
+		}.getType());
+
+		System.out.println("dnfjksbfksdf" + salesAnalyticsIndividualPojos);
+	%>
+
 	<jsp:include page="inc/nav.jsp"></jsp:include>
 	<div class="container mt-4">
 		<nav aria-label="breadcrumb">
@@ -24,7 +40,7 @@
 		<div class="row">
 			<div class="col-md-12 p-0 m-0">
 				<%
-					for (int i = 0; i < 10; i++) {
+					for (  SalesAnalyticsIndividualPojo salesAnalyticsIndividualPojo :salesAnalyticsIndividualPojos) {
 				%>
 				<div class="card p-4 m-4 ">
 					<a class="bg-transparent text-muted nohover"
@@ -37,8 +53,7 @@
 							</div>
 							<div class="col-10">
 								<div>
-									<h3 class="font-weight-bold font-25 mb-1 text-dark">Yogesh
-										Jain</h3>
+									<h3 class="font-weight-bold font-25 mb-1 text-dark"><%=salesAnalyticsIndividualPojo.getName() %></h3>
 								</div>
 								<div class="rateYo p-0 font-12 align-self-center"
 									data-rating="3.2" data-width="15"></div>

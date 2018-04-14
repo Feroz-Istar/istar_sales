@@ -57,6 +57,19 @@ $(document).ready(function(){
 		});
 	
 	
+	 creategraph();
+	
+	
+	if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(showPosition);
+    }
+	
+					
+});
+
+
+
+function creategraph(){
 	$('.highchart_container').each(function(){
 		var table_id=$(this).attr("data-tableid");
 		var title=$(this).attr("data-title");
@@ -94,15 +107,65 @@ $(document).ready(function(){
 		
 		
 	});
-	
-	
-	if (navigator.geolocation) {
-        navigator.geolocation.getCurrentPosition(showPosition);
-    }
-	
-					
-});
+}
 
+function createCustomGraph(url){
+	
+	/*$.post("http://192.168.1.18:8080/istar/rest/sales/dashboard/3/get_product_performance", $("#productwise"), function(data) {
+		 
+
+	       console.log(data);
+	    }).fail(function(response) {
+	    	
+	    	var json = JSON.parse(response.responseText)
+
+	    	$('.alert-danger').html(json.istarViksitProComplexKey);
+
+	    	$('.alert-danger').show();
+
+	    });
+	 */
+	var res ;
+	$.get( url, function( data ) {
+		  $( ".result" ).html( data );
+		 console.log(data);
+		 console.log(data.products);
+		 res = data;
+		 
+		
+	     
+	     
+	     $('.highchart_container').highcharts({
+	    	 series: data.graph,
+		        chart: {
+		            type: 'column'
+		        },
+		        title: {
+		            text: ''
+		        },
+		        xAxis: {
+		            categories: data.products
+		        },
+		        yAxis: {
+		            allowDecimals: false,
+		            title: {
+		                text: 'Units'
+		            }
+		        },
+		        tooltip: {
+		            formatter: function() {
+		                return '<b>'+ this.series.name +'</b><br/>'+
+		                    this.point.y +' ';
+		            }
+		        },
+		        legend: {
+		            symbolRadius: 0
+		        }
+		    });
+		 
+	});
+}
+	
 function showPosition(position){
 	
 	addScript(position);

@@ -1,3 +1,11 @@
+<%@page import="com.google.gson.Gson"%>
+<%@page import="com.google.gson.reflect.TypeToken"%>
+<%@page import="pojo.SalesAnalyticsTeamPojo"%>
+<%@page import="pojo.SalesAnalyticsTeamUserPojo"%>
+ 
+ 
+<%@page import="java.util.ArrayList"%>
+<%@page import="utils.HttpUtilsRequest"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -47,7 +55,26 @@ table thead, table tbody tr {
 <body>
 	<jsp:include page="inc/nav.jsp"></jsp:include>
 
+	<%
+		String res = HttpUtilsRequest.sendGet("http://192.168.1.18:8080/istar/rest/sales/analytics/team/3");
+		//new JsonParser().parse(res).getAsJsonArray()
+		ArrayList<SalesAnalyticsTeamPojo> salesAnalyticsTeamPojos = new ArrayList<>();
+		salesAnalyticsTeamPojos = new Gson().fromJson(res, new TypeToken<ArrayList<SalesAnalyticsTeamPojo>>() {
+		}.getType());
 
+		System.out.println("dnfjksbfksdf" + salesAnalyticsTeamPojos);
+	%>
+
+
+	<%
+		String respons = HttpUtilsRequest.sendGet("http://192.168.1.18:8080/istar/rest/sales/analytics/team/3");
+		//new JsonParser().parse(res).getAsJsonArray()
+		ArrayList<SalesAnalyticsTeamUserPojo> sAnalyticsTeamUserPojos = new ArrayList<>();
+		sAnalyticsTeamUserPojos = new Gson().fromJson(res, new TypeToken<ArrayList<SalesAnalyticsTeamUserPojo>>() {
+		}.getType());
+
+		System.out.println("dnfjksbfksdf" + sAnalyticsTeamUserPojos);
+	%>
 
 
 
@@ -63,13 +90,13 @@ table thead, table tbody tr {
 		<div class="row">
 			<div class="col-md-12 p-0 m-0">
 				<%
-					for (int i = 0; i < 10; i++) {
+					for (SalesAnalyticsTeamPojo salesAnalyticsTeamPojo : salesAnalyticsTeamPojos) {
 				%>
 				<div class="card p-3 m-4  pb-6">
 					<div class="row">
 						<div class="col-md-12">
 							<div class="d-flex">
-								<div class="mr-auto font-weight-bold  font-24 p-0 ml-5 ">North</div>
+								<div class="mr-auto font-weight-bold  font-24 p-0 ml-5 "><%=salesAnalyticsTeamPojo.getGroupName()%></div>
 								<div class="p-0 pt-3 font-weight-bold  font-16   mr-4	"
 									style="color: rgb(155, 155, 155);">23 Members</div>
 								<div class="rateYo mt-3  font-12 align-self-center ml-3"
@@ -78,7 +105,7 @@ table thead, table tbody tr {
 						</div>
 					</div>
 					<button class="btn bg-transparent p-0" data-toggle="collapse"
-						data-target="#<%=i%>" aria-expanded="true"
+						data-target="#<%=salesAnalyticsTeamPojo.getId()%>" aria-expanded="true"
 						aria-controls="collapseOne">
 						<div class="row  pl-4 mb-4 ml-3 ">
 							<div class="col-md-2 pl-0 pr-0 align-self-center">
@@ -86,7 +113,7 @@ table thead, table tbody tr {
 									<div class=" pt-4">
 										<i class="material-icons md-36 text-primary  pt-3">phone_forwarded</i>
 									</div>
-									<div class="text-dark font-24 ">230</div>
+									<div class="text-dark font-24 "><%=salesAnalyticsTeamPojo.getTotalCalls()%></div>
 									<div class="pb-5 font-13	 m-0 p-0 font-weight-bold "
 										style="color: rgb(155, 155, 155);">Calls</div>
 								</div>
@@ -96,7 +123,7 @@ table thead, table tbody tr {
 									<div class=" pt-4">
 										<i class="material-icons md-36 text-primary  pt-3">mail_outline</i>
 									</div>
-									<div class="  text-dark  font-24">22</div>
+									<div class="  text-dark  font-24"><%=salesAnalyticsTeamPojo.getTotalMeetings()%></div>
 									<div class="pb-5 font-13 font-weight-bold"
 										style="color: rgb(155, 155, 155);">Meetings</div>
 								</div>
@@ -106,7 +133,7 @@ table thead, table tbody tr {
 									<div class=" pt-4">
 										<i class="material-icons md-36 text-primary  pt-3">tv</i>
 									</div>
-									<div class="  text-dark font-24">55</div>
+									<div class="  text-dark font-24"><%=salesAnalyticsTeamPojo.getTotalPresantations()%></div>
 									<div class="pb-5 font-13 font-weight-bold "
 										style="color: rgb(155, 155, 155);">Presentations</div>
 								</div>
@@ -116,7 +143,7 @@ table thead, table tbody tr {
 									<div class=" pt-4">
 										<i class="material-icons md-36 text-primary  pt-3">mail_outline</i>
 									</div>
-									<div class="  text-dark font-24">20</div>
+									<div class="  text-dark font-24"><%=salesAnalyticsTeamPojo.getTotalEmails()%></div>
 									<div class="pb-5 font-13 font-weight-bold "
 										style="color: rgb(155, 155, 155);">Emails</div>
 								</div>
@@ -126,7 +153,7 @@ table thead, table tbody tr {
 									<div class=" pt-4">
 										<i class="material-icons md-36 text-primary pt-3">tv</i>
 									</div>
-									<div class=" text-dark font-24  ">300</div>
+									<div class=" text-dark font-24  "><%=salesAnalyticsTeamPojo.getTotalWebinars()%></div>
 									<div class=" pb-5 font-13 font-weight-bold"
 										style="color: rgb(155, 155, 155);">Webinar</div>
 								</div>
@@ -173,7 +200,7 @@ table thead, table tbody tr {
 							</div>
 						</div>
 					</button>
-					<div id="<%=i%>" class="collapse" aria-labelledby="headingOne"
+					<div id="<%=salesAnalyticsTeamPojo.getId()%>" class="collapse" aria-labelledby="headingOne"
 						data-parent="#accordion">
 
 						<div class="row">
@@ -188,25 +215,27 @@ table thead, table tbody tr {
 													NAME</th>
 												<th class="font-weight-bold font-16 " scope="col">PHONE
 													NO</th>
-												<th class="font-weight-bold font-16" scope="col">DATE</th>
-												<th class="font-weight-bold font-16 " scope="col">TIME</th>
-												<th class="font-weight-bold font-16" scope="col">DURATION</th>
+												<th class="font-weight-bold font-16" scope="col">EMAIL ID</th>
+												<th class="font-weight-bold font-16 " scope="col">CITY</th>
+												<th class="font-weight-bold font-16" scope="col">TALENTIFY SCORE</th>
 											</tr>
 										</thead>
 										<tbody>
 											<%
-												for (int x = 1; x < 10; x++) {
+												for (SalesAnalyticsTeamUserPojo sAnalyticsTeamUserPojo : salesAnalyticsTeamPojo.getUsers()) {
+											
+											
 											%>
-											<tr> 
+											<tr>
 
 												<td class="text-muted "><img
-													src="https://www.wakmet.com.pl/sites/default/files/u333_2.jpg"
-													height="45" width="45" /><span class="ml-4">Mark</span></td>
-												<td class="text-muted font-13 pt-4  "><%=x%>8698837789</td>
-												<td class="text-muted font-13 pt-4 ">0<%=x%>/09/2018
+													src="<%=sAnalyticsTeamUserPojo.getProfileImage()%>"
+													height="45" width="45" /><span class=""><%=sAnalyticsTeamUserPojo.getName() %></span></td>
+												<td class="text-muted font-13 pt-4  "><%=sAnalyticsTeamUserPojo.getPhoneNo() %></td>
+												<td class="text-muted font-13 pt-4 "><%=sAnalyticsTeamUserPojo.getEmail()%>
 												</td>
-												<td class="text-muted font-13 pt-4 ">18:00 PM</td>
-												<td class="text-muted font-13 pt-4">00:12:02 Min</td>
+												<td class="text-muted font-13 pt-4 "><%=sAnalyticsTeamUserPojo.getCity()%></td>
+												<td class="text-muted font-13 pt-4">200</td>
 											</tr>
 											<%
 												}

@@ -38,10 +38,11 @@ public class TeamTest {
 		//System.out.println(team.getId());
 		
 		//insertTeamMember(user , team);
-		Team team = findByTeamName("south zone");
-	Project project = 	createProject("Istar Sales projetc" , team.getId());
-	
-	
+//		Team team = findByTeamName("south zone");
+//	Project project = 	createProject("Istar Sales projetc" , team.getId());
+//	
+		IstarUser istarUser =  testUser("Fern@gmail.com","test123");
+		System.out.println("email -------->"+istarUser.getId());
 	}
 	
 	static void insertteam() {
@@ -148,5 +149,29 @@ public class TeamTest {
 		
 	}
 	
+	static IstarUser testUser(String email , String password) {
+		
+		String sql= "Select * from istaruser where email like '%"+email+"%' and password ='"+password+"'";
+		System.out.println(sql);
+		try {
+	st.executeQuery(sql);
+	ResultSet rs = st.executeQuery(sql);
+	
+	IstarUser istarUser =  null;
+	while(rs.next()) {
+		
+		  istarUser =  new IstarUser();
+		istarUser.setEmail(rs.getNString("email"));
+		istarUser.setId(rs.getInt("id"));
+	}
+	return istarUser;
+} catch (SQLException e) {
+	// TODO Auto-generated catch block
+	e.printStackTrace();
+}
+
+		return null;
+		
+	}
 	
 }

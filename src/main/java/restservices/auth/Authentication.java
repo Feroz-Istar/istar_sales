@@ -31,6 +31,7 @@ public class Authentication {
 	@Path("/login")
 	@Produces(MediaType.APPLICATION_JSON)
 	public Response getMsg(@QueryParam("email") String email,@QueryParam("password") String password ) {
+		System.out.println(email);
 		if(email == null) {
 			String msg = "";
 			if(password == null) {

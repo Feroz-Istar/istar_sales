@@ -36,8 +36,8 @@ public class TaskTest {
 		// TODO Auto-generated method stub
 		Faker faker = new Faker();
 		for(int i=0;i<10;i++) {
-		Task task = new Task(faker.superhero().name(), faker.lorem().sentence(), 5, "Not Started", new Timestamp(System.currentTimeMillis()), faker.number().numberBetween(10, 70), faker.number().numberBetween(1, 5), 2, "CALL_TASK");
-		saveTask(task);
+//		Task task = new Task(faker.superhero().name(), faker.lorem().sentence(), 5, "Not Started", new Timestamp(System.currentTimeMillis()), faker.number().numberBetween(10, 70), faker.number().numberBetween(1, 5), 2, "CALL_TASK");
+//		saveTask(task);
 		}	
 		
 	}
