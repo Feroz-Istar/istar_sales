@@ -57,19 +57,74 @@ $(document).ready(function(){
 		});
 	
 	
-	 creategraph();
 	
 	
 	if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(showPosition);
     }
 	
-					
+	$(".dropdown2>.dropdown-item").click(function(){
+		var salected_value2=$(this).text();
+		
+		if(salected_value2 == "Quantitative Performance"){
+			salected_value2 ="quantitative";
+		}else if(salected_value2 == "Qualitative Performance"){
+			salected_value2 = "qualitative";
+		}
+		
+
+		$(this).parent().siblings().text(salected_value2)
+	var url ="http://192.168.1.18:8080/istar/rest/sales_manager/3/team_performance/weekly/"+salected_value2;
+		console.log(url);
+		creategraph(url);
+	});
+	
+	$(".dropdown1>.dropdown-item").click(function(){
+	
+		var salected_value=$(this).text();
+		$(this).parent().siblings().text(salected_value)
+		var url="http://192.168.1.18:8080/istar/rest/sales_manager/3/team_performance/"+salected_value+"/quantitative";
+		console.log(url);
+		creategraph(url)
+		});	
+	
+	$(".team-wise").click(function(){
+		  
+		var team_wise=$(this).text();
+		$(this).parent().siblings().text(team_wise)
+		var url="http://192.168.1.18:8080/istar/rest/sales_manager/3/team_performance/weekly/quantitative";
+		
+		console.log(url);
+		createCustomGraph(url)
+		});	
+	
+	
+		$(".geographical-wise").click(function(){
+			 
+			var team_wise=$(this).text();
+			$(this).parent().siblings().text(team_wise)
+			var url="http://192.168.1.18:8080/istar/rest/sales_manager/3/team_performance/weekly/quantitative";
+			eproductGraph(url)
+			console.log(url);
+			});	
+		
+		$(".products-wise").click(function(){
+			 
+			var product_wise =$(this).text();
+			 
+			$(this).parent().siblings().text(product_wise)
+			var url="http://192.168.1.18:8080/istar/rest/sales_manager/3/team_performance/weekly/quantitative";
+			 console.log(url);
+			 createCustomGraph(url)
+			});	
+		
+		
 });
 
+url = "http://192.168.1.18:8080/istar/rest/sales_manager/3/product_performance";
+creategraph(url);
 
-
-function creategraph(){
+function creategraph(url){
 	$('.highchart_container').each(function(){
 		var table_id=$(this).attr("data-tableid");
 		var title=$(this).attr("data-title");
@@ -111,32 +166,19 @@ function creategraph(){
 
 function createCustomGraph(url){
 	
-	/*$.post("http://192.168.1.18:8080/istar/rest/sales/dashboard/3/get_product_performance", $("#productwise"), function(data) {
-		 
-
-	       console.log(data);
-	    }).fail(function(response) {
-	    	
-	    	var json = JSON.parse(response.responseText)
-
-	    	$('.alert-danger').html(json.istarViksitProComplexKey);
-
-	    	$('.alert-danger').show();
-
-	    });
-	 */
+ 
 	var res ;
 	$.get( url, function( data ) {
 		  $( ".result" ).html( data );
-		 console.log(data);
-		 console.log(data.products);
-		 res = data;
+		 console.log( data.data);
 		 
+		 res = data.data;
+		 console.log(res.graph);
 		
 	     
 	     
 	     $('.highchart_container').highcharts({
-	    	 series: data.graph,
+	    	 series: res.graph,
 		        chart: {
 		            type: 'column'
 		        },

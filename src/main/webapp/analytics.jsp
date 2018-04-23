@@ -211,13 +211,13 @@ table thead, table tbody tr {
 										style="margin-left: auto; margin-right: auto; width: 80%;">
 										<thead>
 											<tr>
-												<th class="font-weight-bold font-16 text-muted" scope="col">CLIENT
+												<th class="font-weight-bold font-16 text-muted pl-5 pr-0 pb-4" scope="col">CLIENT
 													NAME</th>
-												<th class="font-weight-bold font-16 " scope="col">PHONE
+												<th class="font-weight-bold font-16 pl-5 pb-4" scope="col">PHONE
 													NO</th>
-												<th class="font-weight-bold font-16" scope="col">EMAIL ID</th>
-												<th class="font-weight-bold font-16 " scope="col">CITY</th>
-												<th class="font-weight-bold font-16" scope="col">TALENTIFY SCORE</th>
+												<th class="font-weight-bold font-16 pl-5 pb-4" scope="col">EMAIL ID</th>
+												<th class="font-weight-bold font-16  pb-4 pl-5" scope="col">CITY</th>
+												<th class="font-weight-bold font-16 "  scope="col">TALENTIFY SCORE</th>
 											</tr>
 										</thead>
 										<tbody>
@@ -230,11 +230,11 @@ table thead, table tbody tr {
 
 												<td class="text-muted "><img
 													src="<%=sAnalyticsTeamUserPojo.getProfileImage()%>"
-													height="45" width="45" /><span class=""><%=sAnalyticsTeamUserPojo.getName() %></span></td>
-												<td class="text-muted font-13 pt-4  "><%=sAnalyticsTeamUserPojo.getPhoneNo() %></td>
+													height="45" width="45" /><span class=" font-13 ml-1"><%=sAnalyticsTeamUserPojo.getName() %></span></td>
+												<td class="text-muted font-13 pt-4  pl-5"><%=sAnalyticsTeamUserPojo.getPhoneNo() %></td>
 												<td class="text-muted font-13 pt-4 "><%=sAnalyticsTeamUserPojo.getEmail()%>
 												</td>
-												<td class="text-muted font-13 pt-4 "><%=sAnalyticsTeamUserPojo.getCity()%></td>
+												<td class="text-muted font-13 pt-4 pl-5 "><%=sAnalyticsTeamUserPojo.getCity()%></td>
 												<td class="text-muted font-13 pt-4">200</td>
 											</tr>
 											<%

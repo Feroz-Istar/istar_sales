@@ -7,7 +7,7 @@ public class SalesTodaysTaskPojo {
 
 	@SerializedName("duration")
 	@Expose
-	private Integer duration;
+	private String duration;
 	@SerializedName("start_time")
 	@Expose
 	private String startTime;
@@ -33,11 +33,11 @@ public class SalesTodaysTaskPojo {
 	@Expose
 	private String status;
 
-	public Integer getDuration() {
+	public String getDuration() {
 		return duration;
 	}
 
-	public void setDuration(Integer duration) {
+	public void setDuration(String duration) {
 		this.duration = duration;
 	}
 
@@ -104,5 +104,6 @@ public class SalesTodaysTaskPojo {
 	public void setStatus(String status) {
 		this.status = status;
 	}
+
 
 }

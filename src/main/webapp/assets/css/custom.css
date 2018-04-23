@@ -86,7 +86,7 @@ body {
 
 /* start of  border color related css*/
 .border-top-completed {
-	border-top: 2px solid #eb384f !important;
+	border-top: 2px solid #87cefa			 !important;
 }
 
 .border-top-ongoing {
@@ -94,16 +94,16 @@ body {
 }
 
 .border-top-scheduled {
-	border-top: 2px solid #319ef3 !important;
+	border-top: 2px solid #FF0000 !important;
 }
 .scheduled-color{
-	color:#319ef3 !important;
+	color:#FF0000 !important;
 }
 .ongoing-color{
 	color:#37a447 !important;
 }
 .completed-color{
-	color:#eb384f !important;	
+	color:#87cefa !important;	
 }
 .ml-auto {
 	margin-left: auto !important;
@@ -332,4 +332,13 @@ a.nohover:hover {
 .glyphicon-plus-sign {
 	content: url("/assets/img/ic_add_circle_outline_black_36px.svg");
 	margin-top: 20px;
-}
+}.breadcrumb-item+.breadcrumb-item::before{
+	
+	    content: "|" !important;
+	
+/* }.table thead th {
+    vertical-align: middle !important;
+ } */
+ 
+ 
+ 

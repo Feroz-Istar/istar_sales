@@ -1,12 +1,17 @@
-<%@page import="pojo.SalesTeamPerformancePojo"%>
+<%@page import="com.google.gson.JsonArray"%>
+<%@page import="com.google.gson.JsonObject"%>
+<%@page import="pojo.ManagerTasks"%>
+<%@page import="com.google.appengine.repackaged.org.json.JSONArray"%>
+<%@page import="com.google.appengine.repackaged.org.json.JSONObject"%>
+<%@page import="pojo.TeamPerformance"%>
 <%@page import="pojo.GraphPojo"%>
- 
+
 <%@page import="com.google.gson.Gson"%>
 <%@page import="com.google.gson.GsonBuilder"%>
 <%@page import="com.google.gson.JsonParser"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="pojo.SalesTodaysTaskPojo"%>
- 
+
 <%@page import="java.lang.reflect.Type"%>
 <%@page import="com.google.gson.reflect.TypeToken"%>
 
@@ -31,24 +36,31 @@
 
 
 <%
+	TeamPerformance teamPerformance = new TeamPerformance();
+	ArrayList<ManagerTasks> managerTasks = new ArrayList<>();
 
-	String res = HttpUtilsRequest
-			.sendGet("http://192.168.1.18:8080/istar/rest/sales/dashboard/3/todays_tasks");
-	//new JsonParser().parse(res).getAsJsonArray()
-ArrayList<SalesTodaysTaskPojo> salesTodaysTaskPojos=new ArrayList<>();
-	   salesTodaysTaskPojos =  new Gson().fromJson(res,
-			new TypeToken<ArrayList<SalesTodaysTaskPojo>>() {
-			}.getType());
+	String res = HttpUtilsRequest.sendGet("http://192.168.1.18:8080/istar/rest/sales_manager/3/tasks");
+	JsonParser jsonParser = new JsonParser();
+	JsonObject jsonObject = (JsonObject) jsonParser.parse(res);
+	JsonArray jsonArray = jsonObject.get("data").getAsJsonArray();
 
-%>
+	managerTasks = new Gson().fromJson(jsonArray.toString(), new TypeToken<ArrayList<ManagerTasks>>() {
+	}.getType());
 
-<%
+	String performance_response = HttpUtilsRequest.sendGet(
+			"http://192.168.1.18:8080/istar/rest/sales_manager/3/team_performance/weekly/quantitative");
 
-	String performance_response = HttpUtilsRequest
-			.sendGet("http://192.168.1.18:8080/istar/rest/sales/dashboard/3/get_team_performance");
-	//new JsonParser().parse(res).getAsJsonArray()
-SalesTeamPerformancePojo salesTeamPerformancePojo =  new Gson().fromJson(performance_response,SalesTeamPerformancePojo.class);
+	JsonParser jsonParser2 = new JsonParser();
 
+	JsonObject jsonObject2 = (JsonObject) jsonParser2.parse(performance_response);
+
+	JsonObject data = (JsonObject) jsonObject2.get("data");
+
+	JsonArray graph = (JsonArray) data.get("graph");
+
+	//System.out.println(graph);
+
+	teamPerformance = new Gson().fromJson(data.toString(), TeamPerformance.class);
 %>
 
 </head>
@@ -57,68 +69,58 @@ SalesTeamPerformancePojo salesTeamPerformancePojo =  new Gson().fromJson(perform
 	<jsp:include page="inc/nav.jsp"></jsp:include>
 	<main role="main" class="container ">
 
-	<h3 class="mt-4 pt-1 ml-2 mb-0	 font-28">Today's Tasks</h3>
+	<h3 class="mt-2 pt-1 ml-0 mb-0	 font-28">Today's Tasks</h3>
 	<div class="slider autoplay pt-3 mt-4">
 		<%
-			for (SalesTodaysTaskPojo salesTodaysTaskPojo: salesTodaysTaskPojos ) {
-				
+			for (ManagerTasks managerTask : managerTasks) {
+
 				int i = 8;
 				String border_top = "border-top-ongoing";
-				String task_icon_color="";
+				String task_icon_color = "";
 				String icon_name = "desktop_windows";
-				String task_type="";
-				if(salesTodaysTaskPojo.getTaskType().equalsIgnoreCase("SALES_CALL_TASK")){
-					
-					task_type = "Sales Call";
-					
-				}else if(salesTodaysTaskPojo.getTaskType().equalsIgnoreCase("SALES_WEBINAR_PROJECT")){
-					task_type = "Sales Webinar";
-					
-				}else if(salesTodaysTaskPojo.getTaskType().equalsIgnoreCase("SALES_PRESANTATION_TASK")){
-					
-					task_type=	"Sales Presentation";
-				}
-				
-				if (salesTodaysTaskPojo.getStatus().equalsIgnoreCase("SCHEDULED")) {
+				String task_type = "";
+				String status = "";
+				String company_name = "";
+				String contact_person = "";
+
+				if (managerTask.getStatus().equalsIgnoreCase("SCHEDULED")) {
 					border_top = "border-top-scheduled ";
-					task_icon_color="scheduled-color";
- 				}else if(salesTodaysTaskPojo.getStatus().equalsIgnoreCase("ONGOING")){
+					task_icon_color = "scheduled-color";
+					status = "Not Started";
+				} else if (managerTask.getStatus().equalsIgnoreCase("ONGOING")) {
 					border_top = "border-top-ongoing";
-
-				}else if(salesTodaysTaskPojo.getStatus().equalsIgnoreCase("COMPLETED")){
+					status = "In Process";
+					task_icon_color = "ongoing-color";
+				} else if (managerTask.getStatus().equalsIgnoreCase("COMPLETED")) {
 					border_top = "border-top-completed";
+					status = "Completed ";
+					task_icon_color = "completed-color";
+				}
+
+				if (managerTask.getTaskType().equalsIgnoreCase("Sales Call")) {
+					//border_top = "border-top-scheduled";
+					icon_name = "local_phone";
+				} else if (managerTask.getTaskType().equalsIgnoreCase("Sales Presentation")) {
+					//border_top = "border-top-scheduled";
+					icon_name = "tv";
+				} else if (managerTask.getTaskType().equalsIgnoreCase("SALES_WEBINAR_PROJECT")) {
+					//border_top = "border-top-scheduled";
+					icon_name = "tv";
 
 				}
-				if (salesTodaysTaskPojo.getTaskType().equalsIgnoreCase("SALES_CALL_TASK")) {
-					border_top = "border-top-scheduled";
-					icon_name = "local_phone";
-				}else if(salesTodaysTaskPojo.getTaskType().equalsIgnoreCase("SALES_WEBINAR_PROJECT")){
-					border_top = "border-top-scheduled";
-					icon_name = "local_phone";
-				}else if(salesTodaysTaskPojo.getTaskType().equalsIgnoreCase("SALES_WEBINAR_PROJECT")){
-					border_top = "border-top-scheduled";
-					icon_name = "local_phone";	
-					
+
+				if (managerTask.getCompanyName().length() >= 11) {
+					company_name = managerTask.getCompanyName().substring(0, 10) + "...";
+
+				} else {
+					company_name = managerTask.getCompanyName();
 				}
-				
-				String duration="";
-				int hour=0;
-				int min=0;
-				int sec=0;
-				if(salesTodaysTaskPojo.getDuration()/3600 > 0){
-					hour=salesTodaysTaskPojo.getDuration()/3600;
-					duration+=hour+" Hr";
+
+				if (managerTask.getContactPersonName().length() > 15) {
+					contact_person = managerTask.getContactPersonName().substring(0, 12) + "...";
+				} else {
+					contact_person = managerTask.getContactPersonName();
 				}
-				if(salesTodaysTaskPojo.getDuration()/60 > 0){
-					min=salesTodaysTaskPojo.getDuration()/60;
-					duration+=min+" Min ";
-				}
-				if(salesTodaysTaskPojo.getDuration()%60 > 0){
-					sec=salesTodaysTaskPojo.getDuration()%60;
-					duration+=sec+" Sec";
-				}
-				
-				
 		%>
 
 
@@ -129,18 +131,18 @@ SalesTeamPerformancePojo salesTeamPerformancePojo =  new Gson().fromJson(perform
 
 				<div class="row">
 					<div class="col-md-3">
-						<img src="<%=salesTodaysTaskPojo.getProfileImage() %>" alt="..."
+						<img src="<%=managerTask.getContactPersonImage()%>" alt="..."
 							class="img-thumbnail rounded border-0  ">
 					</div>
 					<div class="col-5">
 						<div class="font-weight-normal   font-13"
-							style="color: rgb(85, 85, 85);"><%=task_type%></div>
-						<div class="font-weight-bold   font-16"><%=salesTodaysTaskPojo.getCompanyName() %></div>
-						<div class="font-weight-normal text-muted font-13"><%=salesTodaysTaskPojo.getActorName() %></div>
+							style="color: rgb(85, 85, 85);"><%=managerTask.getTaskType()%></div>
+						<div class="font-weight-bold   font-16"><%=company_name%></div>
+						<div class="font-weight-normal text-muted font-13"><%=contact_person%></div>
 					</div>
 					<div class="col-4 text-center">
-						<div class="font-14 text-muted "><%=salesTodaysTaskPojo.getStatus() %></div>
-						<i class="material-icons <%= task_icon_color%>  font-32 mt-1"><%=icon_name%></i>
+						<div class="font-14 text-muted "><%=status%></div>
+						<i class="material-icons <%=task_icon_color%>  font-32 mt-1"><%=icon_name%></i>
 					</div>
 				</div>
 				<hr>
@@ -158,15 +160,15 @@ SalesTeamPerformancePojo salesTeamPerformancePojo =  new Gson().fromJson(perform
 				</div>
 				<div class="row">
 					<div class="col-4">
-						<div class="font-15  text-center"><%=salesTodaysTaskPojo.getStartTime() %></div>
+						<div class="font-13  text-center"><%=managerTask.getStartTime()%></div>
 					</div>
-					<div class="col-4">
-						<div class="font-15   text-center"><%=duration %></div>
+					<div class="col-4 p-0">
+						<div class="font-13   text-center"><%=managerTask.getDuration()%></div>
 					</div>
 					<div class="col-4  align-self-center">
 						<div>
-							<div class="rateYo p-0 font-12 text-center" data-rating="<%=salesTodaysTaskPojo.getRating() %>"
-								data-width="12"></div>
+							<div class="rateYo p-0 font-12 text-center"
+								data-rating="<%=managerTask.getRating()%>" data-width="12"></div>
 						</div>
 					</div>
 				</div>
@@ -178,16 +180,17 @@ SalesTeamPerformancePojo salesTeamPerformancePojo =  new Gson().fromJson(perform
 		%>
 
 	</div>
-	<div class=" font-28 mt-4 ml-2" style="color: rgb(74, 74, 74);">Performance</div>
+	<div class=" font-28 mt-4 ml-0" style="color: rgb(74, 74, 74);">Performance</div>
 	<nav aria-label="breadcrumb  ">
-		<ol class="breadcrumb  bg-transparent pl-2 ">
-			<li class="breadcrumb-item font-23    "><a class="" href="#"
-			 onclick="createCustomGraph('http://192.168.1.18:8080/istar/rest/sales/dashboard/3/get_team_performance')"	style="color: rgb(74, 74, 74);">Team Wise</a></li>
-			<li class="breadcrumb-item font-23  " aria-current="page"><a
-			id="productwise"	class="" href="#" style="color: rgb(74, 74, 74);" onclick="createCustomGraph('http://192.168.1.18:8080/istar/rest/sales/dashboard/3/get_product_performance')" >Product Wise</a></li>
-			<li class="breadcrumb-item  font-23   " aria-current="page"><a
-				class="" href="#" style="color: rgb(74, 74, 74);">Geographical
-					Area Wise</a></li>
+		<ol class="breadcrumb  bg-transparent pl-0 ">
+			<li class="breadcrumb-item font-23  team-wise  "><a class=""
+				href="#" style="color: rgb(74, 74, 74);">Team Wise</a></li>
+			<li class="breadcrumb-item font-23 products-wise "
+				aria-current="page"><a id="productwise" class="" href="#"
+				style="color: rgb(74, 74, 74);">Product Wise</a></li>
+			<li class="breadcrumb-item  font-23  geographical-wise "
+				aria-current="page"><a class="" href="#"
+				style="color: rgb(74, 74, 74);">Geographical Area Wise</a></li>
 
 		</ol>
 	</nav>
@@ -198,59 +201,93 @@ SalesTeamPerformancePojo salesTeamPerformancePojo =  new Gson().fromJson(perform
 			<div class="card">
 				<div class="helloworld d-flex justify-content-end p-2">
 					<div class="btn-group ml-2 mr-2">
+
 						<button type="button"
-							class="btn bg-dropdown dropdown-toggle text-muted border-top border-left font-12"
-							data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Weekly</button>
-						<div class="dropdown-menu dropdown-menu-right">
-							<button class="dropdown-item font-12" type="button">Weekly</button>
-							<button class="dropdown-item font-12" type="button">Monthly
-								action</button>
-							<button class="dropdown-item font-12" type="button">Annually
-								else here</button>
+							class="btn bg-dropdown dropdown-toggle text-muted border-top border-left font-12 dropdown1-value"
+							data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Weekly
+						</button>
+						<div class="dropdown-menu dropdown-menu-right dropdown1">
+							<%
+								for (String dropdown1 : teamPerformance.getDropdown1()) {
+							%>
+							<button class="dropdown-item font-12" value="<%=dropdown1%>"
+								type="button"><%=dropdown1%>
+							</button>
+							<%
+								}
+							%>
 						</div>
 					</div>
 					<div class="btn-group  ml-2 mr-2">
 						<button type="button"
-							class="btn bg-dropdown dropdown-toggle text-muted  border-top border-left font-12"
+							class="btn bg-dropdown dropdown-toggle text-muted  border-top border-left font-12 dropdown2-value"
 							data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Quantitative
 							Performance</button>
-						<div class="dropdown-menu dropdown-menu-right">
-							<button class="dropdown-item  font-12" type="button">quantitative
-								performance</button>
-							<button class="dropdown-item font-12" type="button">quantitative
-								performance</button>
+						<div class="dropdown-menu dropdown-menu-right dropdown2">
+							<%
+								for (String dropdown2 : teamPerformance.getDropdown2()) {
+							%>
+							<button class="dropdown-item value="
+								<%=dropdown2%>"  font-12" type="button"><%=dropdown2%></button>
+							<%
+								}
+							%>
 
 						</div>
 					</div>
-				</div><div id="highchart_container1" class="highchart_container1" data-tableid="datatable"
-					data-title=""></div>
+				</div>
+				<div id="highchart_container1" class="highchart_container1"
+					data-tableid="datatable" data-title=""></div>
 				<div class="highchart_container" data-tableid="datatable"
 					data-title=""></div>
 
-				<table id="datatable" style="display: none;" >
-				
+				<table id="datatable" style="display: none;">
+
 					<thead>
 						<tr>
-						<th></th>
-						<%for(GraphPojo graphPojo: salesTeamPerformancePojo.getGraph()){ %>
-							<th><%=graphPojo.getName() %></th>
-							  <%} %>
+							<th></th>
+							<%
+								for (GraphPojo graphPojo : teamPerformance.getGraph()) {
+							%>
+							<th><%=graphPojo.getName()%></th>
+							<%
+								}
+							%>
+
+
 						</tr>
 					</thead>
 					<tbody>
-					<%for(String groupName: salesTeamPerformancePojo.getGroups()){ 
-						int sizeData=salesTeamPerformancePojo.getGroups().size();%>
+						<%
+							for (String groupname : teamPerformance.getGroups()) {
+								int Sizedata = teamPerformance.getGroups().size();
+
+								System.out.println("groupname------------->+" + groupname);
+						%>
 						<tr>
-							<th><%=groupName %></th>
-							<%for(GraphPojo graphPojo: salesTeamPerformancePojo.getGraph()){ %>
-							<td><%=graphPojo.getData().get(sizeData-1) %></td>
-							  <%} %>
-							 
+							<th><%=groupname%></th>
+							<%
+								for (GraphPojo graphPojo : teamPerformance.getGraph()) {
+							%>
+							<td><%=graphPojo.getData().get(Sizedata - 1)%></td>
+							<%
+								}
+							%>
+
 						</tr>
-						<% }%> 
+						<%
+							}
+						%>
 					</tbody>
 				</table>
 
+			</div>
+
+			<div class="card" style="width: 100%; height: 100%;">
+				<div class="card-body">
+					<h5 class="card-title">No Data Found</h5>
+
+				</div>
 			</div>
 
 
@@ -399,13 +436,11 @@ SalesTeamPerformancePojo salesTeamPerformancePojo =  new Gson().fromJson(perform
 	</div>
 
 	</main>
-<script type="text/javascript">
+	<script type="text/javascript">
+		function productwise() {
 
-function productwise(){
-	
-}
-
-</script>
+		}
+	</script>
 
 
 
@@ -417,3 +452,7 @@ function productwise(){
 
 </body>
 </html>
+
+<script>
+	
+</script>
